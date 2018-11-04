@@ -12,21 +12,21 @@ import java.io.IOException;
 
 public class Warrior {
 
-    private int x, y;
-    private int size;
-    private int level;
+    private static int x, y;
+    private static int size;
+    private static int level;
 
-    private int h, m, e;
-    private int hMax, mMax, eMax;
+    private static int h, m, e;
+    private static int hMax, mMax, eMax;
 
-    private int up, down, left, right;
-    private int speed;
+    private static int up, down, left, right;
+    private static int speed;
 
-    private double rotationRequired;
+    private static double rotationRequired;
 
-    private Weapon weapon;
+    private static Weapon weapon;
 
-    private BufferedImage image;
+    private static BufferedImage image;
 
     public Warrior(int x, int y){
         this.x = x;
@@ -111,7 +111,7 @@ public class Warrior {
         this.m = m;
     }
 
-    public int gethMax() {
+    public static int gethMax() {
         return hMax;
     }
 
@@ -175,7 +175,7 @@ public class Warrior {
         this.right = right;
     }
 
-    public int getSpeed() {
+    public  int getSpeed() {
         return speed;
     }
 

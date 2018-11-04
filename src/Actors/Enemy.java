@@ -1,6 +1,9 @@
 package Actors;
 
+import Objects.Weapon;
+
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public class Enemy {
 
@@ -9,9 +12,13 @@ public class Enemy {
     private String race;
     private boolean ranged;
 
-    private int speed;
+    private int speed, projectileSpeed;
 
-    boolean horz,vert;
+    private double rotationRequired;
+
+    private boolean horz,vert;
+
+    private BufferedImage projectileImage;
 
     public Enemy(String name, int size, String race, int level, int speed, int health, int dmg, boolean ranged){
         this.name = name;
@@ -49,9 +56,14 @@ public class Enemy {
         g2d.setStroke(new BasicStroke(1));
         g2d.setColor(Color.CYAN);
         g2d.drawRect(x,y,size,size);
-        g2d.setStroke(new BasicStroke(size/10));
+
+        g2d.setStroke(new BasicStroke(1));
+        g2d.setColor(Color.WHITE);
+        g2d.drawRect(getX()-23,getY()+getSize()+12,getSize() + 46,getSize()/10 + 2);
+
+        g2d.setStroke(new BasicStroke(getSize()/10));
         g2d.setColor(new Color(0,128,0));
-        g2d.drawLine(x-20,y+25+size,x-20+(int)((size+40)*((health*1.0)/(maxHealth*1.0))),y+25+size);
+        g2d.drawLine(getX()-20,getY()+15+getSize(),getX()-20+(int)((getSize()+40)*((getHealth()*1.0)/(getMaxHealth()*1.0))),getY()+15+getSize());
     }
 
     public Rectangle getBorder(){
@@ -128,5 +140,61 @@ public class Enemy {
 
     public void setVert(boolean vert) {
         this.vert = vert;
+    }
+
+    public int getMaxHealth() {
+        return maxHealth;
+    }
+
+    public void setMaxHealth(int maxHealth) {
+        this.maxHealth = maxHealth;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getDmg() {
+        return dmg;
+    }
+
+    public void setDmg(int dmg) {
+        this.dmg = dmg;
+    }
+
+    public boolean isRanged() {
+        return ranged;
+    }
+
+    public void setRanged(boolean ranged) {
+        this.ranged = ranged;
+    }
+
+    public double getRotationRequired() {
+        return rotationRequired;
+    }
+
+    public void setRotationRequired(double rotationRequired) {
+        this.rotationRequired = rotationRequired;
+    }
+
+    public BufferedImage getProjectileImage() {
+        return projectileImage;
+    }
+
+    public void setProjectileImage(BufferedImage projectileImage) {
+        this.projectileImage = projectileImage;
+    }
+
+    public int getProjectileSpeed() {
+        return projectileSpeed;
+    }
+
+    public void setProjectileSpeed(int projectileSpeed) {
+        this.projectileSpeed = projectileSpeed;
     }
 }
