@@ -9,19 +9,16 @@ import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
-public class Goblin extends Enemy{
+public class Ghoul extends Enemy {
 
-    private BufferedImage sprite;
+    BufferedImage sprite;
 
-
-    public Goblin(String name, int size, String race, int level, int speed, int health, int dmg, boolean ranged) {
+    public Ghoul(String name, int size, String race, int level, int speed, int health, int dmg, boolean ranged){
         super(name, size, race, level, speed, health, dmg, ranged);
         try {
-            sprite = ImageIO.read(new File("img\\enemies\\goblin.png"));
-            setProjectileImage(ImageIO.read(new File("img\\bullets\\greenBullet.png")));
+            sprite = ImageIO.read(new File("img\\enemies\\ghoul.png"));
+            setProjectileImage(ImageIO.read(new File("img\\bullets\\grayBullet.png")));
         } catch (Exception e){}
-
-        setProjectileSpeed(10);
     }
 
     @Override

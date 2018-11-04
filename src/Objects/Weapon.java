@@ -1,7 +1,5 @@
 package Objects;
 
-import Actors.Projectile;
-
 import java.awt.image.BufferedImage;
 
 public class Weapon {

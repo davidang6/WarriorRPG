@@ -1,16 +1,16 @@
 package Game;
 
 import Actors.*;
+import Actors.Enemies.Ghoul;
 import Actors.Enemies.Goblin;
+import Actors.Enemies.Werewolf;
+import Objects.Projectile;
 import Objects.Weapon;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.plaf.basic.BasicProgressBarUI;
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.geom.AffineTransform;
-import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
@@ -102,6 +102,9 @@ public class Screen extends JPanel{
             //adds enemies to the field at a particular rate
             if ((int) (Math.random() * 300) == 50) {
                 enemies.add(new Goblin("Goon", 50, null, 1, 1, 20, 2, true));
+            }
+            if ((int) (Math.random() * 500) == 50) {
+                enemies.add(new Ghoul("Goon", 50, null, 1, 2, 20, 5, true));
             }
 
             //adds projectiles from each enemy at a particular rate

@@ -1,4 +1,4 @@
-package Actors;
+package Objects;
 
 import java.awt.*;
 import java.awt.geom.AffineTransform;
