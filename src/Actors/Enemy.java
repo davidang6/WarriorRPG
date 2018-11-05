@@ -3,6 +3,8 @@ package Actors;
 import Objects.Weapon;
 
 import java.awt.*;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 
 public class Enemy {
@@ -18,7 +20,7 @@ public class Enemy {
 
     private boolean horz,vert;
 
-    private BufferedImage projectileImage;
+    private BufferedImage projectileImage, sprite;
 
     public Enemy(String name, int size, String race, int level, int speed, int health, int dmg, boolean ranged){
         this.name = name;
@@ -53,9 +55,9 @@ public class Enemy {
 
     public void draw(Graphics g){
         Graphics2D g2d = (Graphics2D)g;
-        g2d.setStroke(new BasicStroke(1));
-        g2d.setColor(Color.CYAN);
-        g2d.drawRect(x,y,size,size);
+        AffineTransform tx = AffineTransform.getRotateInstance(getRotationRequired(), getSize()/2, getSize()/2);
+        AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
+        g2d.drawImage(op.filter(getSprite(),null), getX(), getY(),null);
 
         g2d.setStroke(new BasicStroke(1));
         g2d.setColor(Color.WHITE);
@@ -196,5 +198,13 @@ public class Enemy {
 
     public void setProjectileSpeed(int projectileSpeed) {
         this.projectileSpeed = projectileSpeed;
+    }
+
+    public BufferedImage getSprite() {
+        return sprite;
+    }
+
+    public void setSprite(BufferedImage sprite) {
+        this.sprite = sprite;
     }
 }
